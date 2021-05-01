@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>4.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="ccs-dtm%E8%AC%9B%E5%BA%A721-%E7%AC%AC1%E5%9B%9E">CCS DTM講座'21 第1回</h1>
+<h2 id="%E9%9F%B3%E6%A5%BD%E7%90%86%E8%AB%96%E5%9F%BA%E7%A4%8E3%E3%81%9D%E3%81%AE%E4%BB%96">音楽理論基礎3(その他)</h2>
+<p>ここでは前回やらなかったコードの続きをちょっとだけ説明します。(あんまり深入りするとそれだけで大変なことになってしまうので……)</p>
+<h2 id="%E3%82%BB%E3%83%96%E3%83%B3%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89">セブンスコード</h2>
+<p>前回は三和音の話をしましたが、今回は四和音、とりわけセブンスコードの話をします。セブンスコードはとにかく<strong>エモい</strong>です。が、やや複雑でもあります。度数の話を思い出しながら読んでください。</p>
+<h3 id="%E5%89%8D%E6%BA%96%E5%82%99">前準備</h3>
+<p><img src="./images/dtm009.png" alt="">
+出典: <a href="https://ai-catcher.com/">アイキャッチャー</a><br>
+これまでは〇度という言い方をしてきました。厳密には正しくないときもあって、そういう時には短〇度、長〇度などという呼び方をします。鍵盤で確認します。<br>
+ドの三度上の音はミです。ミの三度上の音はソです。<br>
+では、ドとミは鍵盤何個分(つまり、半音にして何個分)離れているでしょう？4つですね。では、ミとソは鍵盤何個分離れているでしょう？3つですね。同じ度数なのに、音の間隔が違います。これはちょっと困ってしまいますね。</p>
+<p>混同を防ぐために、半音3つ離れた音のことを短三度、4つ離れた音のことを長三度と呼びます。n(n=2,3,5,7)度の音に対して、半音の間隔が小さいn度を短n度、大きいn度を長n度と呼びます。半音の間隔に直すと理解しやすいですが、時間はかかります。(他は完全m度、増/減m度などと呼びます。詳しくは調べてみてください)</p>
+<h3 id="%E3%82%BB%E3%83%96%E3%83%B3%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E3%83%90%E3%83%AA%E3%82%A8%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">セブンスコードのバリエーション</h3>
+<p>セブンスコードはその名の通り、セブンス(七度)の音を三和音に重ねて作ります。今述べた通り、七度の音には短七度、長七度の音があります。一方三和音も、短三度(4番目)を入れるか、長三度(5番目)を入れるかでマイナーかメジャーかに分かれます。よって、三度の長短と七度の長短で4種類のセブンスコードが生まれます。
+各コードをピアノロールで紹介しておきます。
+<img src="./images/dtm012.png" alt=""></p>
+<ul>
+<li>メジャーセブンス<br>
+一小節目の和音です。メジャーコード+長七度。</li>
+<li>セブンス(ドミナントセブンスともいいます)<br>
+二小節目の和音です。メジャーコード+短七度。</li>
+<li>マイナーメジャーセブンス<br>
+三小節目の和音です。マイナーコード+長七度。</li>
+<li>マイナーセブンス<br>
+四小節目の和音です。マイナーコード+短七度。</li>
+</ul>
+<p>お分かりいただけたと思いますが、長七度を重ねると「メジャーセブンス」が、短七度を重ねると「セブンス」がコード名につきます。それぞれ略してΔ7、7などと書きます。</p>
+<h2 id="%E3%83%9C%E3%82%A4%E3%82%B7%E3%83%B3%E3%82%B0%E3%81%A8%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E8%BB%A2%E5%9B%9E">ボイシングとコードの転回</h2>
+<p>前回の作曲前に、「コードはある音をオクターブ上げ下げしてもこわれない」という話をしました。今回は詳しくコードの転回の話をします。</p>
+<h3 id="%E3%83%9C%E3%82%A4%E3%82%B7%E3%83%B3%E3%82%B0">ボイシング</h3>
+<p>コード進行を打ち込んでいくときに考慮しなければならない点として、「コード全体の音の上下の激しさ」があります。ベースはメロディの引き立て役なので、メロディを食ってしまうような激しい音の上下は好ましくありません。<br>
+ですから、「コードは構成音さえ合っていれば問題なく聞こえる」という性質を使って、コードを構成する音をオクターブ単位で上下させていきます。コードにある音だったら、「全部の五度をオク下でも鳴らす」みたいなことをしてもいいです。(低音はあんまり詰めすぎても聞こえないんですけど……)</p>
+<p>このようにしてコードを構成音ごとにばらばらに置いていくことをボイシングといいます。構成音が1オクターブに収まらないときはオープンボイシング、収まるときはクローズドボイシングといいます。<br>
+オープンボイシングの和音からは柔らかい印象を、逆にクローズドボイシングの和音からは硬い印象を受けます。(というのが痛切ですが、筆者はよくわかっていません)</p>
+<h3 id="%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E8%BB%A2%E5%9B%9E">コードの転回</h3>
+<p>転回の定義についてはかなり各サイトによって言っていることが違って困るんですけど、ここでは<a href="https://soundquest.jp/quest/chord/chord-mv3/slash-chord-1/">SoundQuest</a>の言っていることを信じて説明します。<br>
+まず、コードの転回はボイシングの一種です。「音(ここでは特に左手の音)の移動を滑らかにする」という目的も同じです。<br>
+前回、「ルート音はオクターブを下げて鳴らすと厚みが出てよい」という話をしました。実はこのオクターブ下で鳴らす音は、ルート音以外も許されています。すなわち、「左手で弾く音はコードの構成音ならなんでもいい」というのが転回という言葉が意味するところなのです。</p>
+<h2 id="%E3%83%AA%E3%82%BA%E3%83%A0%E9%9A%8A%E4%BD%9C%E6%88%90">リズム隊作成</h2>
+<p>私たちは今まで、メロディ、ベースを作りました。あとはドラムがあればとりあえず曲として完成するはずです。最後の一息、がんばりましょう。</p>
+<h3 id="daw%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">DAWの使い方</h3>
+<p>ドラムは「ある特定の音階の音を鳴らす」楽器ではないので、ふつうはピアノロールで打ち込んだりはしません。じゃあどうやって打ち込むのかというと、リズム隊専用の打ち込み画面があります。<br>
+楽器にSI-Drumを選択。ピアノロールを表示する要領で選んでいくと、「ステップシーケンサ」というのが見つかると思います。クリック！
+<img src="./images/dtm013.png" alt="">
+こんな感じの画面が開かれます。設定の説明をします。左上のBeatsは1ループの小節数を示しています。Stepsは1小節内の拍数を示しています。Stepsは4の倍数にしておくといいと思います。クリックで音が置けて、右クリックで削除できます。よくあるリズムパターンを例にとって、打ち込みの練習をしてみましょう。</p>
+<ul>
+<li>四つ打ち<br>
+ダンスミュージックによく使われているやつです。バスが4分の間隔で鳴って、2、4拍目にスネアが、裏打ちでハイハットが鳴ります。(行の名前は右クリックで変更できます。)
+<img src="./images/dtm014.png" alt=""></li>
+<li>8ビート<br>
+ポップスでめちゃめちゃ使われているやつです。バスとスネアは四つ打ちと同じですが、ハイハットが8分の間隔で鳴ります。これが名前の由来です。
+<img src="./images/dtm015.png" alt=""></li>
+<li>16ビート<br>
+これもポップスやロックでよく使われているやつです。バスとスネアは<strong>基本的に</strong>8ビートと同じで、ハイハットが16分の間隔で鳴ります。これが名前の由来です。
+<img src="./images/dtm016.png" alt="">
+ところで、2小節の頭と4小節の頭にハイハットがありません。これは実際にドラムを叩くことを考えてみるとわかるのですが、16分の間隔でハイハットを叩くのには多くの場合両手が必要で、スネアを同時に叩けないからです。(もちろんテンポが遅い場合はその限りではありません。)</li>
+</ul>
+<h3 id="%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%B4%E6%84%9F%E3%82%92%E7%94%9F%E3%81%BF%E5%87%BA%E3%81%99">グルーヴ感を生み出す</h3>
+<p>今まで打ち込んだドラムはどうも機械的で、ノリが悪い感じがします。ちょっとしたアレンジで自然な感じにしてみましょう。
+<img src="./images/dtm017.png" alt="">
+この画像を参考に、二点ほど紹介しておこうと思います。</p>
+<ol>
+<li>音量を調整する<br>
+いつも一定の音量で音が鳴るのは不自然なので、音量にばらつきを持たせます。特にハイハットはこの調整が重要です。基本的には、「(表拍の音量)&gt;(裏拍の音量)」となるように調整しておけば大丈夫です。</li>
+<li>キックのリズムをアレンジする<br>
+これはやや応用的で、また生音系の音楽に対して有効です。(電子音楽はふつうに四つ打ちしとけば大体何とかなります)具体的にと言われると困るんですが、聴いたことある感じにキックのリズムをいじるとよいです。16分のリズムで入れるのが効きます。</li>
+</ol>
+
+</body>
+</html>

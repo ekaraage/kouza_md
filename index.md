@@ -19,7 +19,7 @@
 
 [第5回](./articles/5.html):楽曲発表会、これからの活動にあたっていろいろ
 
-## おまけの資料(暇なときに読んでみてね)
+## おまけの資料(暇なとき、発表用の曲を作るときとかに読んでみてね)
 [エフェクトの基礎](./articles/effect.html):EQ、Reverb、Compressor、Limiter
 
 [シンセサイザーの基礎](./articles/synth.html):波形、ADSR
