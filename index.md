@@ -6,8 +6,8 @@
 * タイトルは堅苦しく書いてありますが、ゆるくやります。
 * DAWはCalkWalkを使うことを想定していますが、講師がCalkWalk使いではなかったら適宜読み替えてください。
 * 各回の末尾に、執筆の際に参照した資料を掲載してあります。(ない回もあります)気になる人は確認してください。
-## 講座の流れ
 
+## 講座の流れ
 [第0回](./articles/0.html):環境構築(自分でやってね！できなかったら当日やります)
 
 [第1回](./articles/1.html):DAWとは何か、DAWに触れる
@@ -22,8 +22,6 @@
 
 ## おまけの資料(暇なとき、発表用の曲を作るときとかに読んでみてね)
 [エフェクトの基礎、ミックス基礎2](./articles/effect.html):EQ、Reverb、Compressor、Limiter
-
-[シンセサイザーの基礎](./articles/synth.html):波形、ADSR
 
 ## 参考文献兼有用な資料など
 * [sleepfreaks](https://sleepfreaks-dtm.com)  

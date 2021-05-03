@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>effect.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///d%3A//programing//codes//.vscode//github-markdown.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<!-- omit in toc -->
+<h1 id="ccs-dtm%E8%AC%9B%E5%BA%A721-%E3%81%8A%E3%81%BE%E3%81%91">CCS DTM講座'21 おまけ</h1>
+<!-- omit in toc -->
+<h2 id="%E7%9B%AE%E6%AC%A1">目次</h2>
+<ul>
+<li><a href="#10-%E3%82%A8%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E5%9F%BA%E7%A4%8E2">10 エフェクトの基礎、ミックス基礎2</a></li>
+<li><a href="#101-%E3%82%A8%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%9F%BA%E7%A4%8E">10.1 エフェクトの基礎</a>
+<ul>
+<li><a href="#1011-eq%E3%82%A4%E3%82%B3%E3%83%A9%E3%82%A4%E3%82%B6%E3%83%BCequalizer">10.1.1 EQ(イコライザー、Equalizer)</a></li>
+<li><a href="#1012-%E3%83%AA%E3%83%90%E3%83%BC%E3%83%96reverb">10.1.2 リバーブ(Reverb)</a></li>
+<li><a href="#1013-%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AC%E3%83%83%E3%82%B5%E3%83%BCcompcompressor">10.1.3 コンプレッサー(Comp,Compressor)</a></li>
+<li><a href="#1014-%E3%83%AA%E3%83%9F%E3%83%83%E3%82%BF%E3%83%BClimiter">10.1.4 リミッター(Limiter)</a></li>
+</ul>
+</li>
+<li><a href="#102-%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E5%9F%BA%E7%A4%8E2">10.2 ミックス基礎2</a>
+<ul>
+<li><a href="#1021-eq%E3%81%A7%E5%B8%AF%E5%9F%9F%E3%82%AB%E3%83%83%E3%83%88">10.2.1 EQで帯域カット</a></li>
+<li><a href="#1022-%E3%82%B3%E3%83%B3%E3%83%97eq%E3%82%92%E3%81%8B%E3%81%91%E3%82%8B">10.2.2 コンプ、EQをかける</a></li>
+<li><a href="#1023-%E7%A9%BA%E9%96%93%E7%B3%BB%E3%82%92%E3%81%8B%E3%81%91%E3%82%8B">10.2.3 空間系をかける</a></li>
+</ul>
+</li>
+<li><a href="#103-%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">10.3 おわりに</a></li>
+<li><a href="#104-%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E8%B3%87%E6%96%99">10.4 参考にした資料</a></li>
+</ul>
+<h2 id="10-%E3%82%A8%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E5%9F%BA%E7%A4%8E2">10 エフェクトの基礎、ミックス基礎2</h2>
+<p>おまけ記事なので、講座本編よりかはやや雑な書き方をしていますが、ミックスに使う各種エフェクトを紹介し、またその使用方法を説明することを目標としています。</p>
+<h2 id="101-%E3%82%A8%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%9F%BA%E7%A4%8E">10.1 エフェクトの基礎</h2>
+<p>ここでは、様々なエフェクト(の一部)を紹介し、各エフェクトをかけられるおすすめのフリープラグインを掲示しておきます。ちなみに、CalkWalkでは全て内蔵プラグインが存在するみたいです。(が、外部のを使ったほうが取り回しがいいと思います。)</p>
+<h3 id="1011-eq%E3%82%A4%E3%82%B3%E3%83%A9%E3%82%A4%E3%82%B6%E3%83%BCequalizer">10.1.1 EQ(イコライザー、Equalizer)</h3>
+<p>皆さんが一番よく知っている働きをするエフェクトかもしれません。各周波数ごとに、その振幅を大きくしたり小さくしたりすることで音色の調整を行うエフェクトです。いろいろな音楽プレイヤーに実装されているので、使ったことがある方も多いのではないかと思います。超高音、超低音を切るローパス、ハイパスフィルターも基本的についてきます。<br>
+おすすめは<a href="https://www.tokyodawn.net/tdr-nova/">TDR Nova</a>です。フリーながら多機能で、後述するコンプレッサーとしての役目も果たせます。</p>
+<h3 id="1012-%E3%83%AA%E3%83%90%E3%83%BC%E3%83%96reverb">10.1.2 リバーブ(Reverb)</h3>
+<p>人間は残響の具合から、空間を推測することができます。リバーブはその逆、残響を人工的に生み出すエフェクトです。(ほわ～とした感じの音を付加します。)やまびこのように反響させるエコー、短い時間の反響を生み出すディレイとともに空間系エフェクトと呼ばれていますが、後者二つはあんまり明確な区別がないように見えます。<br>
+筆者はシンセ内蔵のリバーブで何とかしちゃうので特におすすめはないんですけど、<a href="https://www.bestservice.com/halls_of_fame_3_free.html">Halls of Fame 3</a>というのがなかなか好評みたいです。<br>
+バカデカ空間にしたい人は<a href="https://valhalladsp.com/shop/reverb/valhalla-supermassive/">Valhalla Super Massive</a>が良いのではないでしょうか。</p>
+<h3 id="1013-%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AC%E3%83%83%E3%82%B5%E3%83%BCcompcompressor">10.1.3 コンプレッサー(Comp,Compressor)</h3>
+<p>コンプレッサーは、音の大小の差を小さくするエフェクトです。もう少し厳密にいうと、ある閾値を超えた大きさの音を圧縮することによって、大きな音を小さくするエフェクトです。音が小さいままだと困るので、波形を持ち上げて大きくすることもできます。波形をいじるので、音色はかなり変わります。<br>
+おすすめは<a href="https://xferrecords.com/freeware/">Xfer Records OTT</a>です。これを適当にかけるだけで今風の音になります。<br>
+音色を大きく変えないものとして<a href="https://www.tokyodawn.net/tdr-kotelnikov/">TDR Kotelnikov</a>があります。どちらかというとマスタリングとかのときに重宝しそうです。</p>
+<h3 id="1014-%E3%83%AA%E3%83%9F%E3%83%83%E3%82%BF%E3%83%BClimiter">10.1.4 リミッター(Limiter)</h3>
+<p>リミッターはその名の通り、音の大きさを制限するエフェクトです。が、真の役割は音を持ち上げて音圧を上げることにあります。やりすぎには気を付けなければいけませんが、適度に音圧を上げて強くしていきましょう。<br>
+筆者が使っているのは<a href="http://www.yohng.com/software/w1limit.html">W1 Limiter</a>ですが、世間一般ではこのリミッター(の元となったもの)はもう時代遅れらしいのでもう一つ紹介しておきます。<br>
+<a href="https://kilohearts.com/products/limiter">kiloHearts Limiter</a>です。</p>
+<h2 id="102-%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E5%9F%BA%E7%A4%8E2">10.2 ミックス基礎2</h2>
+<p>先述したエフェクト群を、実際のミックスの中で使っていく方法を紹介します。これでもかなり基礎的な部分しかやってないらしいです。そ、そんな……。</p>
+<h3 id="1021-eq%E3%81%A7%E5%B8%AF%E5%9F%9F%E3%82%AB%E3%83%83%E3%83%88">10.2.1 EQで帯域カット</h3>
+<p>まず、キックとベースの超低音域(30Hz以下を目安に)を急なハイパスフィルターで切ります。(そもそも論再生されないみたいです)それ以外のパートは100Hz以下を目安にハイパスフィルターで切ります。これで低音域をキックとベース専用の音域にできます。20Khz以上も同様にローパスフィルターで切ります。</p>
+<h3 id="1022-%E3%82%B3%E3%83%B3%E3%83%97eq%E3%82%92%E3%81%8B%E3%81%91%E3%82%8B">10.2.2 コンプ、EQをかける</h3>
+<p>コンプをかけて音の大きさをある程度揃えたら、EQで楽器ごとに被っている帯域を下げて、それぞれの楽器に場所を開けておきます。ここで、目立たせたい帯域を上げてもいいですが、そのようなブーストはできる限り控えるべきで、やるとしてもほんの僅か、というのが一般論です。</p>
+<h3 id="1023-%E7%A9%BA%E9%96%93%E7%B3%BB%E3%82%92%E3%81%8B%E3%81%91%E3%82%8B">10.2.3 空間系をかける</h3>
+<p>リバーブなどをかけて奥行きを調整します。きつくかけると遠くから聞こえてくる感じになります。</p>
+<h2 id="103-%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">10.3 おわりに</h2>
+<p>筆者もこの記事の内容は勉強中です……。サイドチェインなどほかにもいっぱいエフェクトはあるのですが、ここでは割愛します。気になる人は調べてみてください。</p>
+<h2 id="104-%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E8%B3%87%E6%96%99">10.4 参考にした資料</h2>
+<ul>
+<li><a href="https://chanoma.realfreedom.jp/archives/3059">初心者のためのミキシング講座 / 予備知識編</a>:空間論について(基礎1ともかかわりが深いです)</li>
+<li><a href="https://dtmhacker.com/mixing-effect-order/">DTMのミックスでのエフェクトの順番を解説!【初心者向け】</a>:ミックスについて</li>
+</ul>
+
+</body>
+</html>
