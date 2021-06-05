@@ -35,7 +35,7 @@ DTM始めたての人がまず見るといいかもしれないサイトです�
 特に「コードについて学ぶ」、「作曲入門講座」が役に立つと思います。なぜかは知らないけど少し読みにくい感じがしますが……
 * [Computer Music Japan](https://computermusic.jp)  
 全く理論には関係ないんですけど、音源のセール情報とかが手に入ります。
-* [MK / Shadw](https://www.youtube.com/watch?v=WuWSyUhBcTo)  
+* [MK / Shadw](https://www.youtube.com/c/MKShadw)  
 筆者の趣味ですが、電子音楽についてはかなり参考になると思います。
-* [Dot Shikaku](https://www.youtube.com/watch?v=WuWSyUhBcTo)  
+* [Dot Shikaku](https://www.youtube.com/channel/UCo8cJlfv-O70hqGjej1JdeQ)  
 筆者の趣味2ですが、「バーチャル助手」シリーズは「この音はこうしてできていたのか……！」という感じの感動が得られると思います。
